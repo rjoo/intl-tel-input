@@ -104,6 +104,17 @@ function isValidNumber(number, countryCode) {
   }
 }
 
+// check if given number is a possible number
+function isPossibleNumber(number, countryCode) {
+  try {
+    var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+    var numberObj = phoneUtil.parseAndKeepRawInput(number, countryCode);
+    return phoneUtil.isPossibleNumber(numberObj);
+  } catch (e) {
+    return false;
+  }
+}
+
 
 // copied this from i18n.phonenumbers.PhoneNumberFormat in the file https://github.com/googlei18n/libphonenumber/blob/master/javascript/i18n/phonenumbers/phonenumberutil.js
 var numberFormat = {
@@ -167,6 +178,7 @@ goog.exportSymbol('intlTelInputUtils.getExtension', getExtension);
 goog.exportSymbol('intlTelInputUtils.getNumberType', getNumberType);
 goog.exportSymbol('intlTelInputUtils.getValidationError', getValidationError);
 goog.exportSymbol('intlTelInputUtils.isValidNumber', isValidNumber);
+goog.exportSymbol('intlTelInputUtils.isPossibleNumber', isPossibleNumber);
 // enums
 goog.exportSymbol('intlTelInputUtils.numberFormat', numberFormat);
 goog.exportSymbol('intlTelInputUtils.numberType', numberType);

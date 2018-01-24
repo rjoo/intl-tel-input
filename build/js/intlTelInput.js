@@ -1011,6 +1011,11 @@
             var val = $.trim(this._getFullNumber()), countryCode = this.options.nationalMode ? this.selectedCountryData.iso2 : "";
             return window.intlTelInputUtils ? intlTelInputUtils.isValidNumber(val, countryCode) : null;
         },
+        // validate the input val - assumes the global function isPossibleNumber (from utilsScript)
+        isPossibleNumber: function() {
+            var val = $.trim(this._getFullNumber()), countryCode = this.options.nationalMode ? this.selectedCountryData.iso2 : "";
+            return window.intlTelInputUtils ? intlTelInputUtils.isPossibleNumber(val, countryCode) : null;
+        },
         // update the selected flag, and update the input val accordingly
         setCountry: function(countryCode) {
             countryCode = countryCode.toLowerCase();
